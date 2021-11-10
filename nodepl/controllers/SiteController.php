@@ -158,7 +158,7 @@ class SiteController extends Controller
 
     public function actionCategory($id)
     {
-        $date = Category::getArticlesByCategory($id);
+        $data = Category::getArticlesByCategory($id);
 
         $popular = Article::getPopular();
         $recent = Article::getRecent();
