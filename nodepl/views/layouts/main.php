@@ -42,7 +42,7 @@ PublicAsset::register($this);
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?= Url::toRoute(['/']) ?>"><img src="/public/images/logo.png" alt=""></a>
+                    <a class="navbar-brand pt-3" href="<?= Url::toRoute(['/']) ?>">Blog</a>
                 </div>
 
 
@@ -65,7 +65,7 @@ PublicAsset::register($this);
                                 <?= Html::beginForm(['/site/logout'], 'post')
                                 . Html::submitButton(
                                     'Выйти (' . Yii::$app->user->identity->username . ')',
-                                    ['class' => 'btn btn-link logout', 'style' => "padding-top:10px;"]
+                                    ['class' => 'btn btn-link logout', 'style' => "padding-top: 20px;"]
                                 )
                                 . Html::endForm() ?>
                             <?php endif; ?>
