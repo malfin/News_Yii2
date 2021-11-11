@@ -27,7 +27,7 @@ class SignupForm extends Model
     {
         return [
             // username and password are both required
-            [['username', 'password', 'email'], 'required'],
+            [['username', 'password', 'email', 'password_repeat'], 'required'],
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Логин уже есть в системе'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
@@ -51,7 +51,7 @@ class SignupForm extends Model
 
     public function signup()
     {
-        if ($this->validate()) {
+        if (!$this->validate()) {
             return null;
         }
         $user = new User();

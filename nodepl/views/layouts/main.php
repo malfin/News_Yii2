@@ -42,24 +42,26 @@ PublicAsset::register($this);
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/site/index"><img src="/public/images/logo.png" alt=""></a>
+                    <a class="navbar-brand" href="<?= Url::toRoute(['/']) ?>"><img src="/public/images/logo.png" alt=""></a>
                 </div>
 
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav text-uppercase">
-                        <li><a data-toggle="dropdown" class="dropdown-toggle" href="<?= Url::toRoute(['site/']) ?>">Главная</a>
-
+                        <li><a href="<?= Url::toRoute(['/']) ?>">Главная</a>
                         </li>
+                        <?php if (Yii::$app->user->identity->is_Admin): ?>
+                            <li><a href="<?= Url::toRoute(['/admin/']) ?>">Админка</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                     <div class="i_con">
                         <ul class="nav navbar-nav text-uppercase">
                             <?php if (Yii::$app->user->isGuest): ?>
                                 <li><a href="<?= Url::toRoute(['/site/login']) ?>">Войти</a></li>
-                                <li><a href="<?= Url::toRoute(['/site/signup']) ?>">Регистрация</a></li>
+                                <li><a href="<?= Url::toRoute(['/site/signup/']) ?>">Регистрация</a></li>
                             <?php else: ?>
-                                <a href="<?= Url::toRoute(['/admin']) ?>">Админка</a>
                                 <?= Html::beginForm(['/site/logout'], 'post')
                                 . Html::submitButton(
                                     'Выйти (' . Yii::$app->user->identity->username . ')',
