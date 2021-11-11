@@ -86,7 +86,7 @@ PublicAsset::register($this);
             <div class="row">
                 <div class="col-md-4">
                     <aside class="footer-widget">
-                        <div class="about-img"><img src="/public/images/logo-removebg.png" alt=""></div>
+                        <div class="about-img"><h1>Blog</h1></div>
                         <div class="about-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
                             nonumy
                             eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed voluptua. At vero eos et
@@ -94,8 +94,8 @@ PublicAsset::register($this);
                         </div>
                         <div class="address">
                             <h4 class="text-uppercase">Контактная информация</h4>
-                            <p> г. Курган, Радионова 54</p>
-                            <p> Phone: +79068289732</p>
+                            <p> г. Москва</p>
+                            <p> Phone: +90000000000</p>
                         </div>
                     </aside>
                 </div>
@@ -125,9 +125,9 @@ PublicAsset::register($this);
                                             <img src="/public/images/author.png" alt="">
 
                                             <div class="author-text">
-                                                <h4>София</h4>
+                                                <h4>Максим</h4>
 
-                                                <h4>Генеральный директор, Готовая тема</h4>
+                                                <h4>Генеральный директор</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -145,9 +145,9 @@ PublicAsset::register($this);
                                             <img src="/public/images/author.png" alt="">
 
                                             <div class="author-text">
-                                                <h4>София</h4>
+                                                <h4>Максим</h4>
 
-                                                <h4>Генеральный директор, Готовая тема</h4>
+                                                <h4>Генеральный директор</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -165,9 +165,9 @@ PublicAsset::register($this);
                                             <img src="/public/images/author.png" alt="">
 
                                             <div class="author-text">
-                                                <h4>София</h4>
+                                                <h4>Максим</h4>
 
-                                                <h4>Генеральный директор, Готовая тема</h4>
+                                                <h4>Генеральный директор</h4>
                                             </div>
                                         </div>
                                     </div>
