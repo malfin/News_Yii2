@@ -56,9 +56,10 @@ PublicAsset::register($this);
                     <div class="i_con">
                         <ul class="nav navbar-nav text-uppercase">
                             <?php if (Yii::$app->user->isGuest): ?>
-                                <li><a href="<?= Url::toRoute(['site/login']) ?>">Войти</a></li>
-                                <li><a href="<?= Url::toRoute(['site/signup']) ?>">Регистрация</a></li>
+                                <li><a href="<?= Url::toRoute(['/site/login']) ?>">Войти</a></li>
+                                <li><a href="<?= Url::toRoute(['/site/signup']) ?>">Регистрация</a></li>
                             <?php else: ?>
+                                <a href="<?= Url::toRoute(['/admin']) ?>">Админка</a>
                                 <?= Html::beginForm(['/site/logout'], 'post')
                                 . Html::submitButton(
                                     'Выйти (' . Yii::$app->user->identity->username . ')',

@@ -22,14 +22,16 @@ use yii\helpers\Url;
                             <?= $article->content; ?>
 
                         </div>
-<!--                        <div class="decoration">-->
-<!--                            Категория: <a href="--><?//= Url::toRoute(['site/category', 'id' => $article->category->id]) ?><!--"-->
-<!--                                          class="btn btn-default">--><?//= $article->category->title; ?><!--</a>-->
-<!---->
-<!--                        </div>-->
+                        <!--                        <div class="decoration">-->
+                        <!--                            Категория: <a href="-->
+                        <? //= Url::toRoute(['site/category', 'id' => $article->category->id]) ?><!--"-->
+                        <!--                                          class="btn btn-default">-->
+                        <? //= $article->category->title; ?><!--</a>-->
+                        <!---->
+                        <!--                        </div>-->
 
                         <div class="social-share">
-                            <span class="social-share-title pull-left text-capitalize">Автор: Дата: <?= $article->getDate(); ?></span>
+                            <span class="social-share-title pull-left text-capitalize">Автор: <?= $article->user_id; ?> Дата: <?= $article->getDate(); ?></span>
                             <ul class="text-center pull-right">
                                 <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
