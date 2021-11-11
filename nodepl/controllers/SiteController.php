@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Article;
 use app\models\Category;
+use app\models\SignupForm;
 use Yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -100,6 +101,27 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionSignup()
+    {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+
 
     /**
      * Logout action.

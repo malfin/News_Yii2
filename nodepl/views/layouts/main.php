@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use app\assets\AppAsset;
@@ -14,18 +15,18 @@ use yii\bootstrap4\NavBar;
 PublicAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" class="h-100">
+    <!DOCTYPE html>
+    <html lang="<?= Yii::$app->language ?>" class="h-100">
 
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
+    <head>
+        <meta charset="<?= Yii::$app->charset ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php $this->registerCsrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <?php $this->head() ?>
+    </head>
 
-<body class="d-flex flex-column h-100">
+    <body class="d-flex flex-column h-100">
     <?php $this->beginBody() ?>
 
     <nav class="navbar main-menu navbar-default">
@@ -33,7 +34,8 @@ PublicAsset::register($this);
             <div class="menu-content">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -50,12 +52,21 @@ PublicAsset::register($this);
 
                         </li>
                     </ul>
-                    <div class="i_con">
-                        <ul class="nav navbar-nav text-uppercase">
-                            <li><a href="/site/login">Вход</a></li>
-                            <li><a href="/site/signup">Регистрация</a></li>
-                        </ul>
-                    </div>
+                    <?php if (Yii::$app->user->isGuest): ?>
+                        <div class="i_con">
+                            <ul class="nav navbar-nav text-uppercase">
+                                <li><a href="/site/login">Вход</a></li>
+                                <li><a href="/site/signup">Регистрация</a></li>
+                            </ul>
+                        </div>
+                    <?php else: ?>
+                        <div class="i_con">
+                            <ul class="nav navbar-nav text-uppercase">
+                                <li><a href="/site/logout" methods="post">Выйти
+                                        (<?= Yii::$app->user->identity->username ?>)</a></li>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
 
                 </div>
                 <!-- /.navbar-collapse -->
@@ -64,7 +75,7 @@ PublicAsset::register($this);
         <!-- /.container-fluid -->
     </nav>
 
-<?= $content ?>
+    <?= $content ?>
 
     <footer class="footer-widget-section">
         <div class="container">
@@ -72,7 +83,8 @@ PublicAsset::register($this);
                 <div class="col-md-4">
                     <aside class="footer-widget">
                         <div class="about-img"><img src="/public/images/logo-removebg.png" alt=""></div>
-                        <div class="about-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                        <div class="about-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                            nonumy
                             eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed voluptua. At vero eos et
                             accusam et justo duo dlores et ea rebum magna text ar koto din.
                         </div>
@@ -101,7 +113,8 @@ PublicAsset::register($this);
                                         <div class="review-text">
                                             <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
                                                 tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
+                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea
+                                                takimata
                                                 magna aliquyam eratma</p>
                                         </div>
                                         <div class="author-id">
@@ -120,7 +133,8 @@ PublicAsset::register($this);
                                         <div class="review-text">
                                             <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
                                                 tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
+                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea
+                                                takimata
                                                 magna aliquyam eratma</p>
                                         </div>
                                         <div class="author-id">
@@ -139,7 +153,8 @@ PublicAsset::register($this);
                                         <div class="review-text">
                                             <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
                                                 tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
+                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea
+                                                takimata
                                                 magna aliquyam eratma</p>
                                         </div>
                                         <div class="author-id">
@@ -180,7 +195,7 @@ PublicAsset::register($this);
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="text-center">&copy; 2021 Blog 
+                        <div class="text-center">&copy; 2021 Blog
                         </div>
                     </div>
                 </div>
@@ -189,7 +204,7 @@ PublicAsset::register($this);
     </footer>
 
     <?php $this->endBody() ?>
-</body>
+    </body>
 
-</html>
+    </html>
 <?php $this->endPage() ?>
