@@ -15,7 +15,7 @@ use yii\db\ActiveRecord;
  * @property string $authKey;
  * @property  string $accessToken;
  * @property int $created_at;
- * @property int $isAdmin;
+ * @property int $is_Admin;
  * @property int $updated_at;
  * @property string $password;
  */
@@ -41,6 +41,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     public static function findIdentity($id)
     {
         return User::findOne($id);
+    }
+
+    public static function get_is_Admin($user)
+    {
+        return User::find()->where(['username' => $user], ['isAdmin' => 1]);
     }
 
     /**

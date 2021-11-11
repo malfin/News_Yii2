@@ -2,6 +2,8 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\User;
+use Yii;
 use yii\web\Controller;
 
 /**

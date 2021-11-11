@@ -11,6 +11,7 @@ use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use yii\helpers\Url;
 
 PublicAsset::register($this);
 ?>
@@ -48,25 +49,25 @@ PublicAsset::register($this);
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav text-uppercase">
-                        <li><a data-toggle="dropdown" class="dropdown-toggle" href="/site/index">Главная</a>
+                        <li><a data-toggle="dropdown" class="dropdown-toggle" href="<?= Url::toRoute(['site/']) ?>">Главная</a>
 
                         </li>
                     </ul>
-                    <?php if (Yii::$app->user->isGuest): ?>
-                        <div class="i_con">
-                            <ul class="nav navbar-nav text-uppercase">
-                                <li><a href="/site/login">Вход</a></li>
-                                <li><a href="/site/signup">Регистрация</a></li>
-                            </ul>
-                        </div>
-                    <?php else: ?>
-                        <div class="i_con">
-                            <ul class="nav navbar-nav text-uppercase">
-                                <li><a href="/site/logout" methods="post">Выйти
-                                        (<?= Yii::$app->user->identity->username ?>)</a></li>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
+                    <div class="i_con">
+                        <ul class="nav navbar-nav text-uppercase">
+                            <?php if (Yii::$app->user->isGuest): ?>
+                                <li><a href="<?= Url::toRoute(['site/login']) ?>">Войти</a></li>
+                                <li><a href="<?= Url::toRoute(['site/signup']) ?>">Регистрация</a></li>
+                            <?php else: ?>
+                                <?= Html::beginForm(['/site/logout'], 'post')
+                                . Html::submitButton(
+                                    'Выйти (' . Yii::$app->user->identity->username . ')',
+                                    ['class' => 'btn btn-link logout', 'style' => "padding-top:10px;"]
+                                )
+                                . Html::endForm() ?>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
 
                 </div>
                 <!-- /.navbar-collapse -->
