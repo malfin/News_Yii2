@@ -39,12 +39,12 @@ use yii\helpers\Url;
                                 </p>
 
                                 <div class="btn-continue-reading text-center text-uppercase">
-                                    <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]) ?>" class="more-link">Продолжить Чтение</a>
+                                    <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]) ?>"
+                                       class="more-link">Продолжить Чтение</a>
                                 </div>
                             </div>
                             <div class="social-share">
-                                <span class="social-share-title pull-left text-capitalize">Автор <a
-                                            href="#">Рубель</a> <?= $article->getDate(); ?></span>
+                                <span class="social-share-title pull-left text-capitalize">Автор <?= $article->author->username; ?> | <?= $article->getDate(); ?></span>
                                 <ul class="text-center pull-right">
                                     <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li>
                                     <?= (int)$article->viewed; ?>

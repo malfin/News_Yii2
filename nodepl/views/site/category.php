@@ -36,8 +36,7 @@
                                         </p>
                                     </div>
                                     <div class="social-share">
-                                         <span class="social-share-title pull-left text-capitalize">Автор <a
-                                                     href="#">Рубель</a> <?= $article->getDate(); ?></span>
+                                         <span class="social-share-title pull-left text-capitalize">Автор <?= $article->author->username; ?> | <?= $article->getDate(); ?></span>
                                     </div>
                                 </div>
                             </div>

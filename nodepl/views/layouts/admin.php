@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use app\assets\AppAsset;
@@ -39,6 +40,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Главная', 'url' => ['/admin/default/index']],
             ['label' => 'Статьи', 'url' => ['/admin/article/index']],
+            ['label' => 'Комментарии', 'url' => ['/admin/comment/index']],
             ['label' => 'Категории', 'url' => ['/admin/category/index']],
             ['label' => 'Теги', 'url' => ['/admin/tag/index']],
 

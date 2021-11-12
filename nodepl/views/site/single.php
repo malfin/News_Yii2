@@ -31,7 +31,7 @@ use yii\helpers\Url;
                         <!--                        </div>-->
 
                         <div class="social-share">
-                            <span class="social-share-title pull-left text-capitalize">Автор: <?= $article->user_id; ?> Дата: <?= $article->getDate(); ?></span>
+                            <span class="social-share-title pull-left text-capitalize">Автор <?= $article->author->username; ?> | Дата: <?= $article->getDate(); ?></span>
                             <ul class="text-center pull-right">
                                 <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -42,24 +42,51 @@ use yii\helpers\Url;
                         </div>
                     </div>
                 </article>
+                <?php if (!empty($comments)): ?>
+
+                    <?php foreach ($comments as $comment): ?>
+                        <div class="bottom-comment"><!--bottom comment-->
+                            <!--                            <div class="comment-img">-->
+                            <!--                                <img width="50" class="img-circle" src="-->
+                            <? //= $comment->user->image; ?><!--" alt="">-->
+                            <!--                            </div>-->
+
+                            <div class="comment-text">
+                                <h5><?= $comment->user->username; ?></h5>
+
+                                <p class="comment-date">
+                                    <?= $comment->getDate(); ?>
+                                </p>
 
 
-                <div class="leave-comment">
-                    <!--leave comment-->
-                    <h4>Оставьте комментарий</h4>
-
-
-                    <form class="form-horizontal contact-form" role="form" method="post" action="#">
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <textarea class="form-control" rows="6" name="message"
-                                          placeholder="Напишите комментарий"></textarea>
+                                <p class="para"><?= $comment->text; ?></p>
                             </div>
                         </div>
-                        <a href="#" class="btn send-btn">Отправить комментарий</a>
-                    </form>
-                </div>
-                <!--end leave comment-->
+                    <?php endforeach; ?>
+
+                <?php endif; ?>
+                <?php if (!Yii::$app->user->isGuest): ?>
+                    <div class="leave-comment">
+                        <!--leave comment-->
+                        <h4>Оставьте комментарий</h4>
+                        <?php if (Yii::$app->session->getFlash('comment')): ?>
+                            <div class="alert alert-success">
+                                <?= Yii::$app->session->getFlash('comment'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php $form = \yii\widgets\ActiveForm::begin(
+                            ['action' => ['site/comment', 'id' => $article->id],
+                                'options' => ['class' => 'form-horizontal contact-form', 'role' => 'form']]) ?>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <?= $form->field($commentForm, 'comment')->textarea(['class' => 'form-control', 'placeholder' => 'Напишите комментарий'])->label(false) ?>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn send-btn">Отправить комментарий</button>
+                        <?php \yii\widgets\ActiveForm::end() ?>
+                    </div>
+                    <!--end leave comment-->
+                <?php endif; ?>
             </div>
             <?= $this->render('/partials/sidebar', [
                 'popular' => $popular,
